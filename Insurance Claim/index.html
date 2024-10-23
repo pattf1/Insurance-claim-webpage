@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Insurance Self-Service Portal</title>
+</head>
+<body>
+    <header>
+        <h1>Insurance Customer Self-Service Portal</h1>
+        <nav>
+            <button onclick="showSection('claimForm')">File a Claim</button>
+            <button onclick="showSection('claimTracking')">Track Claims</button>
+            <button onclick="showSection('chatbot')">Chatbot</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="claimForm" class="hidden">
+            <h2>Submit a New Insurance Claim</h2>
+            <form id="claimSubmissionForm">
+                <label for="policyNumber">Policy Number:</label>
+                <input type="text" id="policyNumber" required placeholder="Enter your policy number">
+                
+                <label for="incidentDate">Incident Date:</label>
+                <input type="date" id="incidentDate" required>
+                
+                <label for="incidentDescription">Incident Description:</label>
+                <textarea id="incidentDescription" required placeholder="Describe the incident"></textarea>
+                
+                <label for="fileUpload">Attach Supporting Documents:</label>
+                <input type="file" id="fileUpload" accept="image/*,application/pdf">
+
+                <button type="submit">Submit Claim</button>
+            </form>
+            <p id="submissionMessage" class="hidden"></p>
+        </section>
+
+        <section id="claimTracking" class="hidden">
+            <h2>Your Submitted Claims</h2>
+            <table id="claimsTable">
+                <thead>
+                    <tr>
+                        <th>Claim Number</th>
+                        <th>Status</th>
+                        <th>Date Submitted</th>
+                    </tr>
+                </thead>
+                <tbody id="claimsBody"></tbody>
+            </table>
+        </section>
+
+        <section id="chatbot" class="hidden">
+            <h2>Chat with Us</h2>
+            <div id="chatbox">
+                <div id="chatResponse">How can we assist you today?</div>
+                <input type="text" id="userInput" onkeypress="handleChat(event)" placeholder="Type your message...">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Insurance Company. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="dialogflow.js"></script>
+</body>
+</html>
